@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Open Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <!-- Premium Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class', 
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              // Sophisticated Slate/Zinc Neutrals
+              slate: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                500: '#64748b',
+                600: '#475569',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+                950: '#020617',
+              },
+              // Premium Indigo Primary
+              brand: {
+                50: '#eef2ff',
+                100: '#e0e7ff',
+                200: '#c7d2fe',
+                300: '#a5b4fc',
+                400: '#818cf8',
+                500: '#6366f1',
+                600: '#4f46e5', // Main Primary
+                700: '#4338ca',
+                800: '#3730a3',
+                900: '#312e81',
+              }
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'glow': '0 0 15px rgba(99, 102, 241, 0.3)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      
+      /* Root Scroll Consistency */
+      html {
+        background-color: #f8fafc; /* slate-50 */
+        overscroll-behavior: none;
+        height: 100%;
+      }
+      
+      html.dark {
+        background-color: #020617; /* slate-950 */
+        color-scheme: dark;
+      }
+
+      body {
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior: none;
+        min-height: 100%;
+        margin: 0;
+      }
+      
+      html.dark body {
+        background-color: #020617;
+      }
+      
+      /* Refined Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #334155;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Markdown Styles */
+      .markdown-content p { margin-bottom: 0.75rem; line-height: 1.6; }
+      .markdown-content p:last-child { margin-bottom: 0; }
+      .markdown-content ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; color: #334155; }
+      .dark .markdown-content ul { color: #cbd5e1; }
+      .markdown-content ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; color: #334155; }
+      .dark .markdown-content ol { color: #cbd5e1; }
+      .markdown-content h1, .markdown-content h2, .markdown-content h3 { font-weight: 600; color: #0f172a; margin-top: 1rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+      .dark .markdown-content h1, .dark .markdown-content h2, .dark .markdown-content h3 { color: #f8fafc; }
+      .markdown-content code { background-color: #f1f5f9; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.85em; color: #4f46e5; }
+      .dark .markdown-content code { background-color: #1e293b; color: #818cf8; }
+      .markdown-content pre { background-color: #1e293b; color: #f8fafc; padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 0.75rem; }
+      .markdown-content blockquote { border-left: 3px solid #e2e8f0; padding-left: 1rem; color: #64748b; font-style: italic; margin-bottom: 0.75rem; }
+      .dark .markdown-content blockquote { border-left-color: #334155; color: #94a3b8; }
+      
+      /* KaTeX adjustments */
+      .katex-display { margin: 0.75em 0; overflow-x: auto; overflow-y: hidden; }
+      
+      /* Animations */
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes zoomIn95 { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+      @keyframes slideInBottom { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes slideInTop { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes slideInRight { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+      .animate-in { animation-duration: 0.3s; animation-fill-mode: both; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+      .fade-in { animation-name: fadeIn; }
+      .zoom-in-95 { animation-name: zoomIn95; }
+      .slide-in-from-bottom-4 { animation-name: slideInBottom; }
+      .slide-in-from-top-2 { animation-name: slideInTop; }
+      .slide-in-from-right-4 { animation-name: slideInRight; }
+      .shake { animation-name: shake; animation-duration: 0.4s; }
+
+      /* PDF Export Styles */
+      @media print {
+        @page { size: landscape; margin: 0.5cm; }
+        body { background-color: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .no-print, header, footer, #ai-tutor-widget { display: none !important; }
+        .print-only { display: block !important; }
+        .schedule-grid { width: 100% !important; border: 1px solid #e2e8f0; }
+        .schedule-cell { border: 1px solid #e2e8f0 !important; page-break-inside: avoid; }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "react-markdown": "https://esm.sh/react-markdown@9?bundle&external=react,react-dom",
+    "remark-math": "https://esm.sh/remark-math@6?bundle",
+    "rehype-katex": "https://esm.sh/rehype-katex@7?bundle",
+    "remark-gfm": "https://esm.sh/remark-gfm@4?bundle"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
